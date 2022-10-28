@@ -10,6 +10,7 @@ namespace ArchiLog.Models
         [StringLength(50)]
         [Required()]
         public string? Name { get; set; }
+        public int Price { get; set; }
         public int BrandID { get; set; }
         [ForeignKey("BrandID")]
         public Brand? Brand { get; set; }

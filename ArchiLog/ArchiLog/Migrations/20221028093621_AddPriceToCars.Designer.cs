@@ -4,6 +4,7 @@ using ArchiLog.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ArchiLog.Migrations
 {
     [DbContext(typeof(ArchiLogDbContext))]
-    partial class ArchiLogDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221028093621_AddPriceToCars")]
+    partial class AddPriceToCars
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -50,24 +52,6 @@ namespace ArchiLog.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Brands");
-
-                    b.HasData(
-                        new
-                        {
-                            ID = 1,
-                            Active = true,
-                            CreatedAt = new DateTime(2022, 10, 28, 13, 43, 25, 265, DateTimeKind.Utc).AddTicks(5366),
-                            Name = "Peugeot",
-                            Slogan = "Nos voitures pas chères"
-                        },
-                        new
-                        {
-                            ID = 2,
-                            Active = true,
-                            CreatedAt = new DateTime(2022, 10, 28, 13, 43, 25, 265, DateTimeKind.Utc).AddTicks(5369),
-                            Name = "Citroën",
-                            Slogan = "Nos voitures très chères"
-                        });
                 });
 
             modelBuilder.Entity("ArchiLog.Models.Car", b =>
@@ -103,26 +87,6 @@ namespace ArchiLog.Migrations
                     b.HasIndex("BrandID");
 
                     b.ToTable("Cars");
-
-                    b.HasData(
-                        new
-                        {
-                            ID = 1,
-                            Active = true,
-                            BrandID = 1,
-                            CreatedAt = new DateTime(2022, 10, 28, 13, 43, 25, 265, DateTimeKind.Utc).AddTicks(5513),
-                            Name = "Pas cher V1",
-                            Price = 0
-                        },
-                        new
-                        {
-                            ID = 2,
-                            Active = true,
-                            BrandID = 1,
-                            CreatedAt = new DateTime(2022, 10, 28, 13, 43, 25, 265, DateTimeKind.Utc).AddTicks(5515),
-                            Name = "Pas cher V2",
-                            Price = 0
-                        });
                 });
 
             modelBuilder.Entity("ArchiLog.Models.Car", b =>

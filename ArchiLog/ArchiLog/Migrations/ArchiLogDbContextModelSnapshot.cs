@@ -56,17 +56,25 @@ namespace ArchiLog.Migrations
                         {
                             ID = 1,
                             Active = true,
-                            CreatedAt = new DateTime(2022, 10, 28, 13, 43, 25, 265, DateTimeKind.Utc).AddTicks(5366),
+                            CreatedAt = new DateTime(1896, 1, 1, 12, 0, 0, 0, DateTimeKind.Utc),
                             Name = "Peugeot",
-                            Slogan = "Nos voitures pas chères"
+                            Slogan = "Lions de notre temps"
                         },
                         new
                         {
                             ID = 2,
                             Active = true,
-                            CreatedAt = new DateTime(2022, 10, 28, 13, 43, 25, 265, DateTimeKind.Utc).AddTicks(5369),
+                            CreatedAt = new DateTime(1919, 6, 4, 12, 0, 0, 0, DateTimeKind.Utc),
                             Name = "Citroën",
-                            Slogan = "Nos voitures très chères"
+                            Slogan = "Inspiré par vous"
+                        },
+                        new
+                        {
+                            ID = 3,
+                            Active = true,
+                            CreatedAt = new DateTime(1898, 12, 24, 12, 0, 0, 0, DateTimeKind.Utc),
+                            Name = "Renault",
+                            Slogan = "Renault, des voitures à vivre"
                         });
                 });
 
@@ -110,8 +118,8 @@ namespace ArchiLog.Migrations
                             ID = 1,
                             Active = true,
                             BrandID = 1,
-                            CreatedAt = new DateTime(2022, 10, 28, 13, 43, 25, 265, DateTimeKind.Utc).AddTicks(5513),
-                            Name = "Pas cher V1",
+                            CreatedAt = new DateTime(2019, 10, 1, 12, 0, 0, 0, DateTimeKind.Utc),
+                            Name = "208 Electrique",
                             Price = 0
                         },
                         new
@@ -119,8 +127,80 @@ namespace ArchiLog.Migrations
                             ID = 2,
                             Active = true,
                             BrandID = 1,
-                            CreatedAt = new DateTime(2022, 10, 28, 13, 43, 25, 265, DateTimeKind.Utc).AddTicks(5515),
-                            Name = "Pas cher V2",
+                            CreatedAt = new DateTime(2013, 9, 12, 12, 0, 0, 0, DateTimeKind.Utc),
+                            Name = "308 Hybride",
+                            Price = 0
+                        },
+                        new
+                        {
+                            ID = 3,
+                            Active = true,
+                            BrandID = 1,
+                            CreatedAt = new DateTime(2020, 2, 1, 12, 0, 0, 0, DateTimeKind.Utc),
+                            Name = "508 PSE",
+                            Price = 0
+                        },
+                        new
+                        {
+                            ID = 4,
+                            Active = true,
+                            BrandID = 3,
+                            CreatedAt = new DateTime(2022, 10, 13, 12, 0, 0, 0, DateTimeKind.Utc),
+                            Name = "C4 Electrique",
+                            Price = 0
+                        },
+                        new
+                        {
+                            ID = 5,
+                            Active = true,
+                            BrandID = 3,
+                            CreatedAt = new DateTime(2019, 4, 2, 12, 0, 0, 0, DateTimeKind.Utc),
+                            Name = "Clio 5",
+                            Price = 0
+                        },
+                        new
+                        {
+                            ID = 6,
+                            Active = true,
+                            BrandID = 2,
+                            CreatedAt = new DateTime(2020, 12, 1, 12, 0, 0, 0, DateTimeKind.Utc),
+                            Name = "C4",
+                            Price = 0
+                        },
+                        new
+                        {
+                            ID = 7,
+                            Active = true,
+                            BrandID = 2,
+                            CreatedAt = new DateTime(2021, 2, 1, 12, 0, 0, 0, DateTimeKind.Utc),
+                            Name = "SpaceTourer XS",
+                            Price = 0
+                        },
+                        new
+                        {
+                            ID = 8,
+                            Active = true,
+                            BrandID = 1,
+                            CreatedAt = new DateTime(2019, 10, 14, 12, 0, 0, 0, DateTimeKind.Utc),
+                            Name = "3008",
+                            Price = 0
+                        },
+                        new
+                        {
+                            ID = 9,
+                            Active = true,
+                            BrandID = 2,
+                            CreatedAt = new DateTime(2020, 11, 1, 12, 0, 0, 0, DateTimeKind.Utc),
+                            Name = "GS",
+                            Price = 0
+                        },
+                        new
+                        {
+                            ID = 10,
+                            Active = true,
+                            BrandID = 1,
+                            CreatedAt = new DateTime(2021, 5, 1, 12, 0, 0, 0, DateTimeKind.Utc),
+                            Name = "DS 9",
                             Price = 0
                         });
                 });

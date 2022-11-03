@@ -3,6 +3,8 @@ using ArchiLibrary.Extensions;
 using ArchiLibrary.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using Serilog.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,24 +14,31 @@ using System.Threading.Tasks;
 namespace ArchiLibrary.controllers
 {
     [ApiController]
-    public abstract class BaseController<TContext, TModel> : ControllerBase where TContext : BaseDbContext where TModel : BaseModel
+    public abstract class BaseController<TContext, TModel, TController> : ControllerBase where TContext : BaseDbContext where TModel : BaseModel 
     {
         protected readonly TContext _context;
+        private readonly ILogger<TController> _logger;
 
-        public BaseController(TContext context)
+        public BaseController(TContext context, ILogger<TController> logger)
         {
             _context = context;
+            _logger = logger;
         }
+
 
         [HttpGet]
         public async Task<IEnumerable<TModel>> GetAll([FromQuery] Params param)
         {
+            _logger.LogInformation("Ca passe ou ca casse");
+
             return await _context.Set<TModel>().Where(x => x.Active).Sort(param).ToListAsync();
         }
 
         [HttpGet("{id}")]// /api/{item}/3
         public async Task<ActionResult<TModel>> GetById([FromRoute] int id)
         {
+
+
             var item = await _context.Set<TModel>().SingleOrDefaultAsync(x => x.ID == id);
             if (item == null || !item.Active)
                 return NotFound();

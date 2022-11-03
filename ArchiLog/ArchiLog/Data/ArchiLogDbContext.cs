@@ -11,10 +11,10 @@ namespace ArchiLog.Data
         {
             base.OnConfiguring(optionsBuilder);
             // Connection Azure
-            optionsBuilder.UseSqlServer(@"Server=tcp:archiloghaig.database.windows.net,1433;Initial Catalog=archi_log;Persist Security Info=False;User ID=hp;Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30");
+            //optionsBuilder.UseSqlServer(@"Server=tcp:archiloghaig.database.windows.net,1433;Initial Catalog=archi_log;Persist Security Info=False;User ID=hp;Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30");
             
             // Connection Local (SSMS)
-            // optionsBuilder.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=archilog;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+             optionsBuilder.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=archilog2;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

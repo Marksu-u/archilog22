@@ -78,27 +78,6 @@ namespace ArchiLibrary.controllers
             return _context.Set<TModel>().Any(x => x.ID == id);
         }
 
-        //Tri
-        public async Task<ActionResult> SortItem(string sortOrder)
-        {
-            var item = from i in _context.Set<TModel>() select i;
-
-            switch (sortOrder)
-            {
-                case "CreatedAt":
-                    item = item.OrderByDescending(i => i.CreatedAt);
-                    break;
-                case "Active":
-                    item = item.OrderByDescending(i => i.Active);
-                    break;
-                case "DeletedAt":
-                    item = item.OrderByDescending(i => i.DeletedAt);
-                    break;
-
-            }
-
-            return Ok(item);
-        }
         
     }
 }

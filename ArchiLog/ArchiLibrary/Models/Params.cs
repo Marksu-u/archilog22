@@ -13,5 +13,12 @@ namespace ArchiLibrary.Models
         public string? Range { get; set; }
 
         public string? Search { get; set; }
+
+        public string? FilterNameFixe { get; set; }
+        public int? FilterPriceFixe { get; set; }
+        public DateTime? FilterDateFixe { get; set; }
+        public string? FilterNameMultiple { get; set; }
+
+        
     }
 }

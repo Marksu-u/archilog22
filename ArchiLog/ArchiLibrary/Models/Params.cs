@@ -11,5 +11,7 @@ namespace ArchiLibrary.Models
         public string? Asc { get; set; }
         public string? Desc { get; set; }
         public string? Range { get; set; }
+
+        public string? Search { get; set; }
     }
 }

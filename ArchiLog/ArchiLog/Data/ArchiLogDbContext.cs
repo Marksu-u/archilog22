@@ -29,16 +29,16 @@ namespace ArchiLog.Data
 
             modelBuilder.Entity<Car>()
                 .HasData(
-                    new Car { ID = 1, CreatedAt = new DateTime(2019, 10, 01, 12, 00, 00, DateTimeKind.Utc), Name = "208 Electrique", BrandID = 1, Active = true },
-                    new Car { ID = 2, CreatedAt = new DateTime(2013, 09, 12, 12, 00, 00, DateTimeKind.Utc), Name = "308 Hybride", BrandID = 1, Active = true },
-                    new Car { ID = 3, CreatedAt = new DateTime(2020, 02, 01, 12, 00, 00, DateTimeKind.Utc), Name = "508 PSE", BrandID = 1, Active = true },
-                    new Car { ID = 4, CreatedAt = new DateTime(2022, 10, 13, 12, 00, 00, DateTimeKind.Utc), Name = "C4 Electrique", BrandID = 3, Active = true },
-                    new Car { ID = 5, CreatedAt = new DateTime(2019, 04, 02, 12, 00, 00, DateTimeKind.Utc), Name = "Clio 5", BrandID = 3, Active = true },
-                    new Car { ID = 6, CreatedAt = new DateTime(2020, 12, 01, 12, 00, 00, DateTimeKind.Utc), Name = "C4", BrandID = 2, Active = true },
-                    new Car { ID = 7, CreatedAt = new DateTime(2021, 02, 01, 12, 00, 00, DateTimeKind.Utc), Name = "SpaceTourer XS", BrandID = 2, Active = true },
-                    new Car { ID = 8, CreatedAt = new DateTime(2019, 10, 14, 12, 00, 00, DateTimeKind.Utc), Name = "3008", BrandID = 1, Active = true },
-                    new Car { ID = 9, CreatedAt = new DateTime(2020, 11, 01, 12, 00, 00, DateTimeKind.Utc), Name = "GS", BrandID = 2, Active = true },
-                    new Car { ID = 10, CreatedAt = new DateTime(2021, 05, 01, 12, 00, 00, DateTimeKind.Utc), Name = "DS 9", BrandID = 1, Active = true }
+                    new Car { ID = 1, CreatedAt = new DateTime(2019, 10, 01, 12, 00, 00, DateTimeKind.Utc), Name = "208 Electrique", BrandID = 1, Active = true, Price = 25000 },
+                    new Car { ID = 2, CreatedAt = new DateTime(2013, 09, 12, 12, 00, 00, DateTimeKind.Utc), Name = "308 Hybride", BrandID = 1, Active = true, Price = 15000 },
+                    new Car { ID = 3, CreatedAt = new DateTime(2020, 02, 01, 12, 00, 00, DateTimeKind.Utc), Name = "508 PSE", BrandID = 1, Active = true, Price = 30000 },
+                    new Car { ID = 4, CreatedAt = new DateTime(2022, 10, 13, 12, 00, 00, DateTimeKind.Utc), Name = "C4 Electrique", BrandID = 3, Active = true, Price = 35000 },
+                    new Car { ID = 5, CreatedAt = new DateTime(2019, 04, 02, 12, 00, 00, DateTimeKind.Utc), Name = "Clio 5", BrandID = 3, Active = true, Price = 45000 },
+                    new Car { ID = 6, CreatedAt = new DateTime(2020, 12, 01, 12, 00, 00, DateTimeKind.Utc), Name = "C4", BrandID = 2, Active = true, Price = 40000 },
+                    new Car { ID = 7, CreatedAt = new DateTime(2021, 02, 01, 12, 00, 00, DateTimeKind.Utc), Name = "SpaceTourer XS", BrandID = 2, Active = true, Price = 25000 },
+                    new Car { ID = 8, CreatedAt = new DateTime(2019, 10, 14, 12, 00, 00, DateTimeKind.Utc), Name = "3008", BrandID = 1, Active = true , Price = 10000 },
+                    new Car { ID = 9, CreatedAt = new DateTime(2020, 11, 01, 12, 00, 00, DateTimeKind.Utc), Name = "GS", BrandID = 2, Active = true, Price = 25000 },
+                    new Car { ID = 10, CreatedAt = new DateTime(2021, 05, 01, 12, 00, 00, DateTimeKind.Utc), Name = "DS 9", BrandID = 1, Active = true, Price = 50000 }
                 );
         }
 

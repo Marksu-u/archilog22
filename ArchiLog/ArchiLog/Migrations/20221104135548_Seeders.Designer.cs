@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ArchiLog.Migrations
 {
     [DbContext(typeof(ArchiLogDbContext))]
-    [Migration("20221103113945_AddSeed")]
-    partial class AddSeed
+    [Migration("20221104135548_Seeders")]
+    partial class Seeders
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -122,7 +122,7 @@ namespace ArchiLog.Migrations
                             BrandID = 1,
                             CreatedAt = new DateTime(2019, 10, 1, 12, 0, 0, 0, DateTimeKind.Utc),
                             Name = "208 Electrique",
-                            Price = 0
+                            Price = 25000
                         },
                         new
                         {
@@ -131,7 +131,7 @@ namespace ArchiLog.Migrations
                             BrandID = 1,
                             CreatedAt = new DateTime(2013, 9, 12, 12, 0, 0, 0, DateTimeKind.Utc),
                             Name = "308 Hybride",
-                            Price = 0
+                            Price = 15000
                         },
                         new
                         {
@@ -140,7 +140,7 @@ namespace ArchiLog.Migrations
                             BrandID = 1,
                             CreatedAt = new DateTime(2020, 2, 1, 12, 0, 0, 0, DateTimeKind.Utc),
                             Name = "508 PSE",
-                            Price = 0
+                            Price = 30000
                         },
                         new
                         {
@@ -149,7 +149,7 @@ namespace ArchiLog.Migrations
                             BrandID = 3,
                             CreatedAt = new DateTime(2022, 10, 13, 12, 0, 0, 0, DateTimeKind.Utc),
                             Name = "C4 Electrique",
-                            Price = 0
+                            Price = 35000
                         },
                         new
                         {
@@ -158,7 +158,7 @@ namespace ArchiLog.Migrations
                             BrandID = 3,
                             CreatedAt = new DateTime(2019, 4, 2, 12, 0, 0, 0, DateTimeKind.Utc),
                             Name = "Clio 5",
-                            Price = 0
+                            Price = 45000
                         },
                         new
                         {
@@ -167,7 +167,7 @@ namespace ArchiLog.Migrations
                             BrandID = 2,
                             CreatedAt = new DateTime(2020, 12, 1, 12, 0, 0, 0, DateTimeKind.Utc),
                             Name = "C4",
-                            Price = 0
+                            Price = 40000
                         },
                         new
                         {
@@ -176,7 +176,7 @@ namespace ArchiLog.Migrations
                             BrandID = 2,
                             CreatedAt = new DateTime(2021, 2, 1, 12, 0, 0, 0, DateTimeKind.Utc),
                             Name = "SpaceTourer XS",
-                            Price = 0
+                            Price = 25000
                         },
                         new
                         {
@@ -185,7 +185,7 @@ namespace ArchiLog.Migrations
                             BrandID = 1,
                             CreatedAt = new DateTime(2019, 10, 14, 12, 0, 0, 0, DateTimeKind.Utc),
                             Name = "3008",
-                            Price = 0
+                            Price = 10000
                         },
                         new
                         {
@@ -194,7 +194,7 @@ namespace ArchiLog.Migrations
                             BrandID = 2,
                             CreatedAt = new DateTime(2020, 11, 1, 12, 0, 0, 0, DateTimeKind.Utc),
                             Name = "GS",
-                            Price = 0
+                            Price = 25000
                         },
                         new
                         {
@@ -203,7 +203,7 @@ namespace ArchiLog.Migrations
                             BrandID = 1,
                             CreatedAt = new DateTime(2021, 5, 1, 12, 0, 0, 0, DateTimeKind.Utc),
                             Name = "DS 9",
-                            Price = 0
+                            Price = 50000
                         });
                 });
 

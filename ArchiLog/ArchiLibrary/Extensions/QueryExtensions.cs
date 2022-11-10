@@ -76,15 +76,17 @@ namespace ArchiLibrary.Extensions
                 var expression = Expression.Equal(property, constant);
 
                 Expression property2 = parameterExpression;
-                foreach (var nameCar in "name".Split('.'))
+                string name = "name";
+                foreach (var nameCar in name.Split('.'))
                 {
                     property2 = Expression.PropertyOrField(property2, nameCar);
                 }
+                constant = Expression.Constant(p.FilterNameMultiple);
                 var expression2 = Expression.Equal(property2, constant);
                 expression = Expression.Or(expression, expression2);
                 var lambda = Expression.Lambda<Func<TModel, bool>>(expression, parameterExpression);
-                var compiledLambda = lambda.Compile();
-                return (IOrderedQueryable<TModel>)query.Where(compiledLambda).ToList();
+                //var compiledLambda = lambda.Compile();
+                return (IOrderedQueryable<TModel>)query.Where(lambda).AsQueryable();
             }
             //Filtre pour rechercher un nombre fixe fonctionnelle
             else if (!string.IsNullOrWhiteSpace(Convert.ToString(p.FilterPriceFixe)))
@@ -104,6 +106,50 @@ namespace ArchiLibrary.Extensions
                 var constant = Expression.Constant(p.FilterDateFixe);
                 var property = Expression.Property(parameterExpression, "createdAt");
                 var expression = Expression.Equal(property, constant);
+                var lambda = Expression.Lambda<Func<TModel, bool>>(expression, parameterExpression);
+
+                return (IOrderedQueryable<TModel>)query.Where(lambda);
+            }
+            //Filtre pour rechercher un prix inférieur ou égal fonctionnel
+            else if (!string.IsNullOrWhiteSpace(Convert.ToString(p.FilterInferiorPrice)))
+            {
+                var parameterExpression = Expression.Parameter(typeof(TModel), "x");
+                var constant = Expression.Constant(p.FilterInferiorPrice);
+                var property = Expression.Property(parameterExpression, "price");
+                var expression = Expression.LessThanOrEqual(property, constant);
+                var lambda = Expression.Lambda<Func<TModel, bool>>(expression, parameterExpression);
+
+                return (IOrderedQueryable<TModel>)query.Where(lambda);
+            }
+            //Filtre pour rechercher un prix supérieur ou égal fonctionnel
+            else if (!string.IsNullOrWhiteSpace(Convert.ToString(p.FilterSuperiorPrice)))
+            {
+                var parameterExpression = Expression.Parameter(typeof(TModel), "x");
+                var constant = Expression.Constant(p.FilterSuperiorPrice);
+                var property = Expression.Property(parameterExpression, "price");
+                var expression = Expression.GreaterThanOrEqual(property, constant);
+                var lambda = Expression.Lambda<Func<TModel, bool>>(expression, parameterExpression);
+
+                return (IOrderedQueryable<TModel>)query.Where(lambda);
+            }
+            //Filtre pour rechercher une date fixe inférieure ou égale fonctionnelle
+            else if (!string.IsNullOrWhiteSpace(Convert.ToString(p.FilterInferiorDate)))
+            {
+                var parameterExpression = Expression.Parameter(typeof(TModel), "x");
+                var constant = Expression.Constant(p.FilterInferiorDate);
+                var property = Expression.Property(parameterExpression, "createdAt");
+                var expression = Expression.LessThanOrEqual(property, constant);
+                var lambda = Expression.Lambda<Func<TModel, bool>>(expression, parameterExpression);
+
+                return (IOrderedQueryable<TModel>)query.Where(lambda);
+            }
+            //Filtre pour rechercher une date fixe supérieure ou égale fonctionnelle
+            else if (!string.IsNullOrWhiteSpace(Convert.ToString(p.FilterSuperiorDate)))
+            {
+                var parameterExpression = Expression.Parameter(typeof(TModel), "x");
+                var constant = Expression.Constant(p.FilterSuperiorDate);
+                var property = Expression.Property(parameterExpression, "createdAt");
+                var expression = Expression.GreaterThanOrEqual(property, constant);
                 var lambda = Expression.Lambda<Func<TModel, bool>>(expression, parameterExpression);
 
                 return (IOrderedQueryable<TModel>)query.Where(lambda);

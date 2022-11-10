@@ -19,6 +19,11 @@ namespace ArchiLibrary.Models
         public DateTime? FilterDateFixe { get; set; }
         public string? FilterNameMultiple { get; set; }
 
-        
+        public int? FilterInferiorPrice { get; set; }
+        public int? FilterSuperiorPrice { get; set; }
+        public DateTime? FilterInferiorDate { get; set; }
+        public DateTime? FilterSuperiorDate { get; set; }
+
+
     }
 }

@@ -70,22 +70,24 @@ namespace ArchiLibrary.Extensions
             //Filtre pour rechercher une valeur multiple NON FONCTIONNELLE
             else if (!string.IsNullOrWhiteSpace(p.FilterNameMultiple))
             {
+                              
                 var parameterExpression = Expression.Parameter(typeof(TModel), "x");
-                var constant = Expression.Constant(p.FilterNameMultiple);
                 var property = Expression.Property(parameterExpression, "name");
-                var expression = Expression.Equal(property, constant);
 
-                Expression property2 = parameterExpression;
-                string name = "name";
-                foreach (var nameCar in name.Split('.'))
+                var tab = p.FilterNameMultiple.Split(',');
+                var expression = Expression.Equal(property, Expression.Constant(tab[0]));
+
+                BinaryExpression bin = expression;
+                if(tab.Length > 1)
                 {
-                    property2 = Expression.PropertyOrField(property2, nameCar);
+                    foreach (var value in tab.Skip(1))
+                    {
+                        expression = Expression.Equal(property, Expression.Constant(value));
+                        bin = Expression.Or(bin, expression);
+                    }
                 }
-                constant = Expression.Constant(p.FilterNameMultiple);
-                var expression2 = Expression.Equal(property2, constant);
-                expression = Expression.Or(expression, expression2);
-                var lambda = Expression.Lambda<Func<TModel, bool>>(expression, parameterExpression);
-                //var compiledLambda = lambda.Compile();
+
+                var lambda = Expression.Lambda<Func<TModel, bool>>(bin, parameterExpression);
                 return (IOrderedQueryable<TModel>)query.Where(lambda).AsQueryable();
             }
             //Filtre pour rechercher un nombre fixe fonctionnelle

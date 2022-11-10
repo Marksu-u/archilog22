@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -67,10 +68,10 @@ namespace ArchiLibrary.Extensions
 
                 return (IOrderedQueryable<TModel>)query.Where(lambda);
             }
-            //Filtre pour rechercher une valeur multiple NON FONCTIONNELLE
+            //Filtre pour rechercher une valeur multiple string FONCTIONNELLE
             else if (!string.IsNullOrWhiteSpace(p.FilterNameMultiple))
             {
-                              
+
                 var parameterExpression = Expression.Parameter(typeof(TModel), "x");
                 var property = Expression.Property(parameterExpression, "name");
 
@@ -78,9 +79,58 @@ namespace ArchiLibrary.Extensions
                 var expression = Expression.Equal(property, Expression.Constant(tab[0]));
 
                 BinaryExpression bin = expression;
-                if(tab.Length > 1)
+                if (tab.Length > 1)
                 {
                     foreach (var value in tab.Skip(1))
+                    {
+                        expression = Expression.Equal(property, Expression.Constant(value));
+                        bin = Expression.Or(bin, expression);
+                    }
+                }
+
+                var lambda = Expression.Lambda<Func<TModel, bool>>(bin, parameterExpression);
+                return (IOrderedQueryable<TModel>)query.Where(lambda).AsQueryable();
+            }
+            //Filtre pour rechercher une valeur multiple int FONCTIONNELLE
+            else if (!string.IsNullOrWhiteSpace(p.FilterPriceMultiple))
+            {
+
+                var parameterExpression = Expression.Parameter(typeof(TModel), "x");
+                var property = Expression.Property(parameterExpression, "price");
+
+                var tab = p.FilterPriceMultiple.Split(',');
+                int[] convertedItems = Array.ConvertAll<string, int>(tab, int.Parse);
+                //int tab[] = p.FilterPriceMultiple;
+                var expression = Expression.Equal(property, Expression.Constant(convertedItems[0]));
+
+                BinaryExpression bin = expression;
+                if (convertedItems.Length > 1)
+                {
+                    foreach (var value in convertedItems.Skip(1))
+                    {
+                        expression = Expression.Equal(property, Expression.Constant(value));
+                        bin = Expression.Or(bin, expression);
+                    }
+                }
+
+                var lambda = Expression.Lambda<Func<TModel, bool>>(bin, parameterExpression);
+                return (IOrderedQueryable<TModel>)query.Where(lambda).AsQueryable();
+            }
+            //Filtre pour rechercher une valeur multiple date FONCTIONNELLE
+            else if (!string.IsNullOrWhiteSpace(p.FilterDateMultiple))
+            {
+
+                var parameterExpression = Expression.Parameter(typeof(TModel), "x");
+                var property = Expression.Property(parameterExpression, "createdAt");
+
+                var tab = p.FilterDateMultiple.Split(',');
+                DateTime[] convertedItems = Array.ConvertAll<string, DateTime>(tab, DateTime.Parse);
+                var expression = Expression.Equal(property, Expression.Constant(convertedItems[0]));
+
+                BinaryExpression bin = expression;
+                if (convertedItems.Length > 1)
+                {
+                    foreach (var value in convertedItems.Skip(1))
                     {
                         expression = Expression.Equal(property, Expression.Constant(value));
                         bin = Expression.Or(bin, expression);

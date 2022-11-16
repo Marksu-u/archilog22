@@ -1,0 +1,21 @@
+GEORGES Elodie 
+	Filtres, Recherches
+
+
+AMRAOUI Zakaria
+	Tests unitaires
+
+
+GAPASIN Marc
+	Serilog, API Versioning
+
+
+SEMERDJIAN Haig
+	Pagination
+
+
+
+https://localhost:7157/swagger/index.html
+https://blog.christian-schou.dk/how-to-use-api-versioning-in-net-core-web-api/
+https://www.youtube.com/watch?v=hJfzwNxwNI0 .NET 6 Web API EF Core Pagination (Entity Framework Core 6 & SQL Server)
+https://www.youtube.com/watch?v=WmTiCtCYDGw - Implementing ASP.NET Web API pagination

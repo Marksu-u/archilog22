@@ -8,7 +8,9 @@ using Serilog.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace ArchiLibrary.controllers
@@ -16,7 +18,7 @@ namespace ArchiLibrary.controllers
     [ApiController]
     //[Route("api/[controller]")]
     [Route("api/v{version:apiVersion}/[controller]")]
-    [ApiVersion("1.0")]
+    [ApiVersion("1")]
     public abstract class BaseController<TContext, TModel, TController> : ControllerBase where TContext : BaseDbContext where TModel : BaseModel 
     {
         protected readonly TContext _context;
@@ -30,12 +32,28 @@ namespace ArchiLibrary.controllers
 
 
         [HttpGet]
-        public async Task<IEnumerable<TModel>> GetAll([FromQuery] Params param)
+        public async Task<ActionResult<List<TModel>>> GetAll(
+            [FromQuery] Params param, 
+            [FromQuery] ParamsPagination @params)
         {
             _logger.LogInformation("Ca passe ou ca casse");
 
-            return await _context.Set<TModel>().Where(x => x.Active).Sort(param).ToListAsync();
+            var items = _context.Set<TModel>().Where(x => x.Active)
+                .Sort(param)
+                .OrderBy(x => x.ID);
+
+            var paginationMetadata = new PaginationMetadata(items.Count(), @params.Page, @params.ItemsPerPage) ;
+            Response.Headers.Add("X-Pagination", JsonSerializer.Serialize(paginationMetadata));
+
+            var results  = await items
+                .Skip((@params.Page - 1) * @params.ItemsPerPage)
+                .Take(@params.ItemsPerPage)
+                .ToListAsync();
+
+            return Ok(results);
         }
+
+
 
         [HttpGet("{id}")]// /api/{item}/3
         public async Task<ActionResult<TModel>> GetById([FromRoute] int id)

@@ -49,33 +49,7 @@ namespace ArchiLog.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Brands");
-
-                    b.HasData(
-                        new
-                        {
-                            ID = 1,
-                            Active = true,
-                            CreatedAt = new DateTime(1896, 1, 1, 12, 0, 0, 0, DateTimeKind.Utc),
-                            Name = "Peugeot",
-                            Slogan = "Lions de notre temps"
-                        },
-                        new
-                        {
-                            ID = 2,
-                            Active = true,
-                            CreatedAt = new DateTime(1919, 6, 4, 12, 0, 0, 0, DateTimeKind.Utc),
-                            Name = "Citroën",
-                            Slogan = "Inspiré par vous"
-                        },
-                        new
-                        {
-                            ID = 3,
-                            Active = true,
-                            CreatedAt = new DateTime(1898, 12, 24, 12, 0, 0, 0, DateTimeKind.Utc),
-                            Name = "Renault",
-                            Slogan = "Renault, des voitures à vivre"
-                        });
+                    b.ToTable("Brands", (string)null);
                 });
 
             modelBuilder.Entity("ArchiLog.Models.Car", b =>
@@ -110,99 +84,7 @@ namespace ArchiLog.Migrations
 
                     b.HasIndex("BrandID");
 
-                    b.ToTable("Cars");
-
-                    b.HasData(
-                        new
-                        {
-                            ID = 1,
-                            Active = true,
-                            BrandID = 1,
-                            CreatedAt = new DateTime(2019, 10, 1, 12, 0, 0, 0, DateTimeKind.Utc),
-                            Name = "208 Electrique",
-                            Price = 25000
-                        },
-                        new
-                        {
-                            ID = 2,
-                            Active = true,
-                            BrandID = 1,
-                            CreatedAt = new DateTime(2013, 9, 12, 12, 0, 0, 0, DateTimeKind.Utc),
-                            Name = "308 Hybride",
-                            Price = 15000
-                        },
-                        new
-                        {
-                            ID = 3,
-                            Active = true,
-                            BrandID = 1,
-                            CreatedAt = new DateTime(2020, 2, 1, 12, 0, 0, 0, DateTimeKind.Utc),
-                            Name = "508 PSE",
-                            Price = 30000
-                        },
-                        new
-                        {
-                            ID = 4,
-                            Active = true,
-                            BrandID = 3,
-                            CreatedAt = new DateTime(2022, 10, 13, 12, 0, 0, 0, DateTimeKind.Utc),
-                            Name = "C4 Electrique",
-                            Price = 35000
-                        },
-                        new
-                        {
-                            ID = 5,
-                            Active = true,
-                            BrandID = 3,
-                            CreatedAt = new DateTime(2019, 4, 2, 12, 0, 0, 0, DateTimeKind.Utc),
-                            Name = "Clio 5",
-                            Price = 45000
-                        },
-                        new
-                        {
-                            ID = 6,
-                            Active = true,
-                            BrandID = 2,
-                            CreatedAt = new DateTime(2020, 12, 1, 12, 0, 0, 0, DateTimeKind.Utc),
-                            Name = "C4",
-                            Price = 40000
-                        },
-                        new
-                        {
-                            ID = 7,
-                            Active = true,
-                            BrandID = 2,
-                            CreatedAt = new DateTime(2021, 2, 1, 12, 0, 0, 0, DateTimeKind.Utc),
-                            Name = "SpaceTourer XS",
-                            Price = 25000
-                        },
-                        new
-                        {
-                            ID = 8,
-                            Active = true,
-                            BrandID = 1,
-                            CreatedAt = new DateTime(2019, 10, 14, 12, 0, 0, 0, DateTimeKind.Utc),
-                            Name = "3008",
-                            Price = 10000
-                        },
-                        new
-                        {
-                            ID = 9,
-                            Active = true,
-                            BrandID = 2,
-                            CreatedAt = new DateTime(2020, 11, 1, 12, 0, 0, 0, DateTimeKind.Utc),
-                            Name = "GS",
-                            Price = 25000
-                        },
-                        new
-                        {
-                            ID = 10,
-                            Active = true,
-                            BrandID = 1,
-                            CreatedAt = new DateTime(2021, 5, 1, 12, 0, 0, 0, DateTimeKind.Utc),
-                            Name = "DS 9",
-                            Price = 50000
-                        });
+                    b.ToTable("Cars", (string)null);
                 });
 
             modelBuilder.Entity("ArchiLog.Models.Car", b =>
